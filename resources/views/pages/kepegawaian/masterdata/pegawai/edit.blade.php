@@ -63,29 +63,29 @@
                                         <div class="form-group">
                                             <label class="small mb-1" for="nama_pegawai">Nama Lengkap</label>
                                             <input class="form-control" id="nama_pegawai" type="text"
-                                                name="nama_pegawai" value="{{ $item->nama_pegawai }}" />
+                                                name="nama_pegawai" value="{{ $item->nama_pegawai }}" required/>
                                         </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-4">
                                             <label class="small mb-1" for="nama_panggilan">Nama Panggilan</label>
                                             <input class="form-control" id="nama_panggilan" type="text"
-                                                name="nama_panggilan" value="{{ $item->nama_panggilan }}" />
+                                                name="nama_panggilan" value="{{ $item->nama_panggilan }}" required/>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label class="small mb-1" for="nik_pegawai">NIK Pegawai</label>
                                             <input class="form-control" id="nik_pegawai" type="text"
-                                                name="nik_pegawai" value="{{ $item->nik_pegawai }}" />
+                                                name="nik_pegawai" value="{{ $item->nik_pegawai }}" required/>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label class="small mb-1" for="npwp_pegawai">NPWP Pegawai</label>
                                             <input class="form-control" id="npwp_pegawai" type="text"
-                                                name="npwp_pegawai" value="{{ $item->npwp_pegawai }}" />
+                                                name="npwp_pegawai" value="{{ $item->npwp_pegawai }}" required/>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-4">
                                             <label class="small mb-1" for="id_jabatan">Jabatan</label>
-                                            <select class="form-control" name="id_jabatan" id="id_jabatan">
+                                            <select class="form-control" name="id_jabatan" id="id_jabatan" required>
                                                 <option value="{{ $item->jabatan->id_jabatan }}">{{ $item->jabatan->nama_jabatan }}</option>
                                                 @foreach ($jabatan as $jabatan)
                                                     <option value="{{ $jabatan->id_jabatan }}">{{ $jabatan->nama_jabatan }}
@@ -96,19 +96,19 @@
                                         <div class="form-group col-md-4">
                                             <label class="small mb-1" for="tempat_lahir">Tempat Lahir</label>
                                             <input class="form-control" id="tempat_lahir" type="text"
-                                                name="tempat_lahir" value="{{ $item->tempat_lahir }}" />
+                                                name="tempat_lahir" value="{{ $item->tempat_lahir }}" required/>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label class="small mb-1" for="tanggal_lahir">Tanggal Lahir</label>
                                             <input class="form-control" id="tanggal_lahir" type="date"
-                                                name="tanggal_lahir" value="{{ $item->tanggal_lahir }}" />
+                                                name="tanggal_lahir" value="{{ $item->tanggal_lahir }}" required/>
                                         </div>
                                       
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-4">
                                             <label class="small mb-1" for="jenis_kelamin">Jenis Kelamin</label>
-                                            <select name="jenis_kelamin" id="jenis_kelamin" class="form-control">
+                                            <select name="jenis_kelamin" id="jenis_kelamin" class="form-control" required>
                                                 <option value="{{ $item->jenis_kelamin }}">{{ $item->jenis_kelamin }}</option>
                                                 <option value="Laki-Laki">Laki Laki</option>
                                                 <option value="Perempuan">Perempuan</option>
@@ -117,11 +117,11 @@
                                         <div class="form-group col-md-4">
                                             <label class="small mb-1" for="no_telp">Phone number</label>
                                             <input class="form-control" id="no_telp" name="no_telp" type="number"
-                                                value="{{ $item->no_telp }}" />
+                                                value="{{ $item->no_telp }}" required/>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label class="small mb-1" for="agama">Agama</label>
-                                            <select name="agama" id="agama" class="form-control">
+                                            <select name="agama" id="agama" class="form-control" required>
                                                 <option value="{{ $item->agama }}">{{ $item->agama }}</option>
                                                 <option value="Hindu">Hindu</option>
                                                 <option value="Islam">Islam</option>
@@ -137,7 +137,7 @@
                                             <label class="small mb-1" for="pendidikan_terakhir">Pendidikan
                                                 Terakhir</label>
                                             <select name="pendidikan_terakhir" id="pendidikan_terakhir"
-                                                class="form-control">
+                                                class="form-control" required>
                                                 <option value="{{ $item->pendidikan_terakhir }}">{{ $item->pendidikan_terakhir }}</option>
                                                 <option value="SLTP">SLTP</option>
                                                 <option value="SLTA">SLTA</option>
@@ -150,19 +150,34 @@
                                         <div class="form-group col-md-4">
                                             <label class="small mb-1" for="tanggal_masuk">Tanggal Masuk</label>
                                             <input class="form-control" name="tanggal_masuk" id="tanggal_masuk" type="date"
-                                                value="{{ $item->tanggal_masuk }}" />
+                                                value="{{ $item->tanggal_masuk }}" required/>
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label class="small mb-1" for="kota_asal">Kota Asal</label>
-                                            <input class="form-control" name="kota_asal" id="kota_asal" type="text"
-                                                placeholder="Masukan Kota Asal" value="{{ $item->kota_asal }}"/>
+                                            <label class="small mb-1 mr-1" for="status_pegawai">Status Perkawinan</label><span
+                                                class="mr-4 mb-3" style="color: red">*</span>
+                                            <select name="status_pegawai" id="status_pegawai"  class="form-control" required>
+                                                <option value="{{ $item->status_pegawai }}"> {{ $item->status_pegawai }}</option>
+                                                <option value="Lajang Tanpa Tanggungan">Lajang Tanpa Tanggungan</option>
+                                                <option value="Lajang 1 Tanggungan">Lajang 1 Tanggungan</option>
+                                                <option value="Lajang 2 Tanggungan">Lajang 2 Tanggungan</option>
+                                                <option value="Lajang 3 Tanggungan">Lajang 3 Tanggungan</option>
+                                                <option value="Menikah">Menikah</option>
+                                                <option value="Menikah 1 Anak">Menikah 1 Anak</option>
+                                                <option value="Menikah 2 Anak">Menikah 2 Anak</option>
+                                                <option value="Menikah 3 Anak">Menikah 3 Anak</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="form-group col-md-12">
+                                        <div class="form-group col-md-4">
+                                            <label class="small mb-1" for="kota_asal">Kota Asal</label>
+                                            <input class="form-control" name="kota_asal" id="kota_asal" type="text"
+                                                placeholder="Masukan Kota Asal" value="{{ $item->kota_asal }}" required/>
+                                        </div>
+                                        <div class="form-group col-md-8">
                                             <label class="small mb-1" for="alamat">Alamat Lengkap</label>
                                             <input class="form-control" name="alamat" id="alamat" type="text"
-                                                value="{{ $item->alamat }}" />
+                                                value="{{ $item->alamat }}" required/>
                                         </div>
                                     </div>
                                     <hr class="my-4" />

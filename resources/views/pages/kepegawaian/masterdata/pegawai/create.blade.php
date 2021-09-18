@@ -212,6 +212,27 @@
                                             </div> @enderror
                                         </div>
                                         <div class="form-group col-md-4">
+                                            <label class="small mb-1 mr-1" for="status_pegawai">Status Perkawinan</label><span
+                                                class="mr-4 mb-3" style="color: red">*</span>
+                                            <select name="status_pegawai" id="status_pegawai" class="form-control"
+                                                value="{{ old('status_pegawai') }}"
+                                                class="form-control @error('status_pegawai') is-invalid @enderror">
+                                                <option value="{{ old('status_pegawai')}}"> Pilih Status</option>
+                                                <option value="Lajang Tanpa Tanggungan">Lajang Tanpa Tanggungan</option>
+                                                <option value="Lajang 1 Tanggungan">Lajang 1 Tanggungan</option>
+                                                <option value="Lajang 2 Tanggungan">Lajang 2 Tanggungan</option>
+                                                <option value="Lajang 3 Tanggungan">Lajang 3 Tanggungan</option>
+                                                <option value="Menikah">Menikah</option>
+                                                <option value="Menikah 1 Anak">Menikah 1 Anak</option>
+                                                <option value="Menikah 2 Anak">Menikah 2 Anak</option>
+                                                <option value="Menikah 3 Anak">Menikah 3 Anak</option>
+                                            </select>
+                                            @error('status_pegawai')<div class="text-danger small mb-1">{{ $message }}
+                                            </div> @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
                                             <label class="small mb-1 mr-1" for="kota_asal">Kota Asal</label><span
                                                 class="mr-4 mb-3" style="color: red">*</span>
                                             <input class="form-control" name="kota_asal" id="kota_asal" type="text"
@@ -220,9 +241,8 @@
                                             @error('kota_asal')<div class="text-danger small mb-1">{{ $message }}
                                             </div> @enderror
                                         </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-12">
+                                    
+                                        <div class="form-group col-md-8">
                                             <label class="small mb-1 mr-1" for="alamat">Alamat Lengkap</label><span
                                                 class="mr-4 mb-3" style="color: red">*</span>
                                             <input class="form-control" name="alamat" id="alamat" type="text"

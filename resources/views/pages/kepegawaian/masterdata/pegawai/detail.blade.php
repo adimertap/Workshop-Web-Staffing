@@ -181,6 +181,28 @@
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <div class="d-flex flex-column font-weight-bold">
+                                                        <label class="small text-muted line-height-normal">Pendidikan Terakhir
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <label class="small text-muted line-height-normal">:
+                                                        {{ $item->pendidikan_terakhir }}
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="d-flex flex-column font-weight-bold">
+                                                        <label class="small text-muted line-height-normal">Status Pegawai
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <label class="small text-muted line-height-normal">:
+                                                        {{ $item->status_pegawai }}
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="d-flex flex-column font-weight-bold">
                                                         <label class="small text-muted line-height-normal">Alamat
                                                     </div>
                                                 </div>

@@ -36,7 +36,8 @@ class Pegawai extends Model
         'agama',
         'pendidikan_terakhir',
         'tanggal_masuk',
-        'id_bengkel'
+        'id_bengkel',
+        'status_pegawai'
     ];
 
     protected $hidden = [];

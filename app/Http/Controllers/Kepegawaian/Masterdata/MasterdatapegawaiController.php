@@ -80,6 +80,7 @@ class MasterdatapegawaiController extends Controller
         $pegawai->agama = $request->agama;
         $pegawai->pendidikan_terakhir = $request->pendidikan_terakhir;
         $pegawai->tanggal_masuk = $request->tanggal_masuk;
+        $pegawai->status_pegawai= $request->status_pegawai;
 
         $pegawai->save();
 

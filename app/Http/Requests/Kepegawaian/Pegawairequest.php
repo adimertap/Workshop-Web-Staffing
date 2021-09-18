@@ -38,6 +38,7 @@ class Pegawairequest extends FormRequest
             'agama' => 'required|string|in:Hindu,Islam,Budha,Konghucu,Katolik,Protestan',
             'pendidikan_terakhir' =>'required|string|in:SLTP,SLTA,STM/SMK,DIPLOMA,SARJANA,PASCA SARJANA',
             'tanggal_masuk' => 'required|date',
+            'status_pegawai' => 'required'
         ];
     }
 
@@ -87,6 +88,7 @@ class Pegawairequest extends FormRequest
             'agama.required' => 'Error! Anda Belum Mengisi Agama',
             'pendidikan_terakhir.required' => 'Error! Anda Belum Mengisi Pendidikan Terakhir',
             'tanggal_masuk.required' => 'Error! Anda Belum Mengisi Tanggal Masuk',
+            'status_pegawai.required' => 'Error! Anda Belum Mengisi Status Pegawai',
         ];
     }
 }
