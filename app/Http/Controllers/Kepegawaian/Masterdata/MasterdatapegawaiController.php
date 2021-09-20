@@ -7,6 +7,7 @@ use App\Http\Requests\Kepegawaian\Pegawairequest;
 use App\Model\Inventory\Retur\Retur;
 use App\Model\Kepegawaian\Jabatan;
 use App\Model\Kepegawaian\Pegawai;
+use App\Model\Payroll\MasterPTKP;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -44,6 +45,7 @@ class MasterdatapegawaiController extends Controller
             'jabatan'])->get();
 
         $jabatan = Jabatan::where('nama_jabatan', '!=', 'Owner')->get();
+        $ptkp = MasterPTKP::get();
 
         $id = Pegawai::getId();
         foreach($id as $value);
@@ -53,7 +55,7 @@ class MasterdatapegawaiController extends Controller
 
         $kode_pegawai = $blt.$idbaru;
         
-        return view('pages.kepegawaian.masterdata.pegawai.create', compact('pegawai','jabatan','kode_pegawai')); 
+        return view('pages.kepegawaian.masterdata.pegawai.create', compact('pegawai','jabatan','kode_pegawai','ptkp')); 
     }
 
     /**
@@ -80,7 +82,7 @@ class MasterdatapegawaiController extends Controller
         $pegawai->agama = $request->agama;
         $pegawai->pendidikan_terakhir = $request->pendidikan_terakhir;
         $pegawai->tanggal_masuk = $request->tanggal_masuk;
-        $pegawai->status_pegawai= $request->status_pegawai;
+        $pegawai->id_ptkp= $request->id_ptkp;
 
         $pegawai->save();
 
@@ -95,7 +97,7 @@ class MasterdatapegawaiController extends Controller
      */
     public function show($id_pegawai)
     {
-        $item = Pegawai::findOrFail($id_pegawai);
+        $item = Pegawai::with('ptkp')->findOrFail($id_pegawai);
         $jabatan = Jabatan::all();
         
         return view('pages.kepegawaian.masterdata.pegawai.detail',[
@@ -113,12 +115,14 @@ class MasterdatapegawaiController extends Controller
      */
     public function edit($id_pegawai)
     {
-        $item = Pegawai::findOrFail($id_pegawai);
+        $item = Pegawai::with('ptkp')->findOrFail($id_pegawai);
         $jabatan = Jabatan::all();
-        
+        $ptkp = MasterPTKP::get();
+
         return view('pages.kepegawaian.masterdata.pegawai.edit',[
             'item' => $item,
-            'jabatan' => $jabatan
+            'jabatan' => $jabatan,
+            'ptkp' => $ptkp
         ]);
 
     }

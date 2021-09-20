@@ -153,18 +153,13 @@
                                                 value="{{ $item->tanggal_masuk }}" required/>
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label class="small mb-1 mr-1" for="status_pegawai">Status Perkawinan</label><span
-                                                class="mr-4 mb-3" style="color: red">*</span>
-                                            <select name="status_pegawai" id="status_pegawai"  class="form-control" required>
-                                                <option value="{{ $item->status_pegawai }}"> {{ $item->status_pegawai }}</option>
-                                                <option value="Lajang Tanpa Tanggungan">Lajang Tanpa Tanggungan</option>
-                                                <option value="Lajang 1 Tanggungan">Lajang 1 Tanggungan</option>
-                                                <option value="Lajang 2 Tanggungan">Lajang 2 Tanggungan</option>
-                                                <option value="Lajang 3 Tanggungan">Lajang 3 Tanggungan</option>
-                                                <option value="Menikah">Menikah</option>
-                                                <option value="Menikah 1 Anak">Menikah 1 Anak</option>
-                                                <option value="Menikah 2 Anak">Menikah 2 Anak</option>
-                                                <option value="Menikah 3 Anak">Menikah 3 Anak</option>
+                                            <label class="small mb-1" for="id_ptkp">Status Pegawai</label>
+                                            <select class="form-control" name="id_ptkp" id="id_ptkp" required>
+                                                <option value="{{ $item->ptkp->id_ptkp }}">{{ $item->ptkp->nama_ptkp }}</option>
+                                                @foreach ($ptkp as $ptkps)
+                                                    <option value="{{ $ptkps->id_ptkp }}">{{ $ptkps->nama_ptkp }}
+                                                </option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>

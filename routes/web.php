@@ -439,6 +439,13 @@ Route::group(
                 Route::resource('gaji-pokok', 'MasterdatagajipokokController');
             });
 
+        Route::prefix('payroll')
+        ->namespace('Payroll\Masterdata')
+        ->middleware(['owner', 'verified'])
+        ->group(function () {
+            Route::resource('ptkp', 'PTKPController');
+        });
+
         Route::prefix('payroll/masterdatatunjangan')
             ->namespace('Payroll\Masterdata')
             ->middleware(['owner', 'verified'])

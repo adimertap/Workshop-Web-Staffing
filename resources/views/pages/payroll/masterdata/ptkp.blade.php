@@ -1,6 +1,7 @@
-@extends('layouts.Admin.adminpegawai')
+@extends('layouts.Admin.adminpayroll')
 
 @section('content')
+
 {{-- HEADER --}}
 <main>
     <header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4">
@@ -10,7 +11,7 @@
                     <div class="col-auto mb-3">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i class="fas fa-warehouse"></i></div>
-                            Master Data Jabatan
+                            Master PTKP
                         </h1>
                     </div>
                 </div>
@@ -40,7 +41,7 @@
                         </button>
                     </div>
                     @endif
-                    {{-- SHOW ENTRIES --}}
+
                     <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
                         <div class="row">
                             <div class="col-sm-12">
@@ -51,21 +52,29 @@
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-sort="ascending"
                                                 aria-label="Name: activate to sort column descending"
-                                                style="width: 20px;">No</th>
+                                                style="width: 30px;">No</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Position: activate to sort column ascending"
-                                                style="width: 250px;">Jabatan</th>
+                                                style="width: 60px;">Nama PTKP</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                colspan="1" aria-label="Position: activate to sort column ascending"
+                                                style="width: 100px;">Besaran PTKP</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                colspan="1" aria-label="Actions: activate to sort column ascending"
+                                                style="width: 150px;">Keterangan</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($jabatan as $item)
+                                        @forelse ($ptkp as $item)
                                         <tr role="row" class="odd">
                                             <th scope="row" class="small" class="sorting_1">{{ $loop->iteration}}</th>
-                                            <td>{{ $item->nama_jabatan }}</td>
-                                            @empty
-                                       
+                                            <td>{{ $item->nama_ptkp }}</td>
+                                            <td>Rp. {{ number_format($item->besaran_ptkp,2,',','.') }}</td>
+                                            <td>{{ $item->keterangan_ptkp }}</td>
+                                        </tr>
+                                        @empty
+                                     
                                         @endforelse
-
                                     </tbody>
                                 </table>
                             </div>
@@ -76,7 +85,6 @@
         </div>
     </div>
 </main>
-
 
 
 @endsection

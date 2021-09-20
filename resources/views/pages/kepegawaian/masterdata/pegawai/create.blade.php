@@ -79,18 +79,21 @@
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label class="small mb-1 mr-1" for="nik_pegawai">NIK Pegawai</label><small
-                                            class="text-muted">*16 digit</small></label> <span class="mr-4 mb-3" style="color: red">*</span>
+                                                class="text-muted">*16 digit</small></label> <span class="mr-4 mb-3"
+                                                style="color: red">*</span>
                                             <input class="form-control" id="nik_pegawai" type="text" name="nik_pegawai"
-                                                placeholder="Input NIK Pegawai" value="{{ old('nik_pegawai') }}" minlength="16" maxlength="16"
+                                                placeholder="Input NIK Pegawai" value="{{ old('nik_pegawai') }}"
+                                                minlength="16" maxlength="16"
                                                 class="form-control @error('nik_pegawai') is-invalid @enderror" />
                                             @error('nik_pegawai')<div class="text-danger small mb-1">{{ $message }}
                                             </div> @enderror
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label class="small mb-1 mr-1" for="npwp_pegawai">NPWP</label><small
-                                            class="text-muted">*16 digit</small></label> <span class="mr-4 mb-3" style="color: red">*</span>
-                                            <input class="form-control" id="npwp_pegawai" type="text" minlength="16" maxlength="16"
-                                                name="npwp_pegawai" placeholder="Input NPWP Pegawai"
+                                                class="text-muted">*16 digit</small></label> <span class="mr-4 mb-3"
+                                                style="color: red">*</span>
+                                            <input class="form-control" id="npwp_pegawai" type="text" minlength="16"
+                                                maxlength="16" name="npwp_pegawai" placeholder="Input NPWP Pegawai"
                                                 value="{{ old('npwp_pegawai') }}"
                                                 class="form-control @error('npwp_pegawai') is-invalid @enderror" />
                                             @error('npwp_pegawai')<div class="text-danger small mb-1">{{ $message }}
@@ -101,23 +104,15 @@
                                         <div class="form-group col-md-4">
                                             <label class="small mb-1 mr-1" for="id_jabatan">Jabatan</label><span
                                                 class="mr-4 mb-3" style="color: red">*</span>
-                                            <div class="input-group input-group-joined">
-                                                <div class="input-group-append">
-                                                    <a href="" class="btn btn-sm btn-secondary" type="button"
-                                                        data-toggle="modal" data-target="#Modaljabatan">
-                                                        <i class="fas fa-plus"></i>
-                                                    </a>
-                                                </div>
-                                                <select class="form-control" name="id_jabatan" id="id_jabatan"
-                                                    value="{{ old('id_jabatan') }}"
-                                                    class="form-control @error('id_jabatan') is-invalid @enderror">
-                                                    <option>Pilih Jabatan</option>
-                                                    @foreach ($jabatan as $item)
-                                                    <option value="{{ $item->id_jabatan }}">{{ $item->nama_jabatan }}
-                                                    </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
+                                            <select class="form-control" name="id_jabatan" id="id_jabatan"
+                                                value="{{ old('id_jabatan') }}"
+                                                class="form-control @error('id_jabatan') is-invalid @enderror">
+                                                <option>Pilih Jabatan</option>
+                                                @foreach ($jabatan as $item)
+                                                <option value="{{ $item->id_jabatan }}">{{ $item->nama_jabatan }}
+                                                </option>
+                                                @endforeach
+                                            </select>
                                             @error('id_jabatan')<div class="text-danger small mb-1">{{ $message }}
                                             </div> @enderror
                                         </div>
@@ -212,24 +207,24 @@
                                             </div> @enderror
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label class="small mb-1 mr-1" for="status_pegawai">Status Perkawinan</label><span
+                                            <label class="small mb-1 mr-1" for="id_ptkp">Status Pegawai</label><span
                                                 class="mr-4 mb-3" style="color: red">*</span>
-                                            <select name="status_pegawai" id="status_pegawai" class="form-control"
-                                                value="{{ old('status_pegawai') }}"
-                                                class="form-control @error('status_pegawai') is-invalid @enderror">
-                                                <option value="{{ old('status_pegawai')}}"> Pilih Status</option>
-                                                <option value="Lajang Tanpa Tanggungan">Lajang Tanpa Tanggungan</option>
-                                                <option value="Lajang 1 Tanggungan">Lajang 1 Tanggungan</option>
-                                                <option value="Lajang 2 Tanggungan">Lajang 2 Tanggungan</option>
-                                                <option value="Lajang 3 Tanggungan">Lajang 3 Tanggungan</option>
-                                                <option value="Menikah">Menikah</option>
-                                                <option value="Menikah 1 Anak">Menikah 1 Anak</option>
-                                                <option value="Menikah 2 Anak">Menikah 2 Anak</option>
-                                                <option value="Menikah 3 Anak">Menikah 3 Anak</option>
+                                            <select class="form-control" name="id_ptkp" id="id_ptkp"
+                                                value="{{ old('id_ptkp') }}"
+                                                class="form-control @error('id_ptkp') is-invalid @enderror">
+                                                <option>Pilih Status Pegawai</option>
+                                                @foreach ($ptkp as $itemz)
+                                                <option value="{{ $itemz->id_ptkp }}">{{ $itemz->nama_ptkp }}
+                                                </option>
+                                                @endforeach
                                             </select>
-                                            @error('status_pegawai')<div class="text-danger small mb-1">{{ $message }}
-                                            </div> @enderror
+                                            </label><span class="small" style="color: gray">Cek aturan PTKP <a
+                                                    target="_blank" href="{{ route('ptkp.index') }}"
+                                                    class="font-weight-500 text-primary"> disini </a></span>
+                                                    @error('id_ptkp')<div class="text-danger small mb-1">{{ $message }}
+                                                    </div> @enderror
                                         </div>
+                                      
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-4">
@@ -241,7 +236,7 @@
                                             @error('kota_asal')<div class="text-danger small mb-1">{{ $message }}
                                             </div> @enderror
                                         </div>
-                                    
+
                                         <div class="form-group col-md-8">
                                             <label class="small mb-1 mr-1" for="alamat">Alamat Lengkap</label><span
                                                 class="mr-4 mb-3" style="color: red">*</span>

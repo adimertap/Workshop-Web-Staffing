@@ -124,6 +124,9 @@
                                 <a class="nav-link" href="{{ route('masterdatatunjangan') }}">
                                     Master Tunjangan
                                 </a>
+                                <a class="nav-link" href="{{ route('ptkp.index') }}">
+                                    Master PTKP
+                                </a>
                             </nav>
                         </div>
                     </div>

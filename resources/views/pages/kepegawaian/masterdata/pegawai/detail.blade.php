@@ -197,7 +197,7 @@
                                                 </div>
                                                 <div class="col">
                                                     <label class="small text-muted line-height-normal">:
-                                                        {{ $item->status_pegawai }}
+                                                        {{ $item->ptkp->nama_ptkp }}
                                                 </div>
                                             </div>
                                             <div class="row">

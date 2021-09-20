@@ -4,6 +4,7 @@ namespace App\Model\Kepegawaian;
 
 use App\Model\Payroll\Detailtunjangan;
 use App\Model\Payroll\Mastergajipokok;
+use App\Model\Payroll\MasterPTKP;
 use App\Model\Payroll\Mastertunjangan;
 use App\Scopes\OwnershipScope;
 use Carbon\Carbon;
@@ -37,7 +38,7 @@ class Pegawai extends Model
         'pendidikan_terakhir',
         'tanggal_masuk',
         'id_bengkel',
-        'status_pegawai'
+        'id_ptkp'
     ];
 
     protected $hidden = [];
@@ -46,7 +47,12 @@ class Pegawai extends Model
 
     public function jabatan()
     {
-        return $this->belongsTo(Jabatan::class, 'id_jabatan', 'id_jabatan')->withTrashed();
+        return $this->belongsTo(Jabatan::class, 'id_jabatan', 'id_jabatan');
+    }
+
+    public function ptkp()
+    {
+        return $this->belongsTo(MasterPTKP::class, 'id_ptkp', 'id_ptkp');
     }
 
     public function Detailtunjangan()
