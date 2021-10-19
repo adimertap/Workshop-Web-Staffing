@@ -34,17 +34,6 @@ Route::patch('account/password', 'Account\PasswordController@update')->name('pas
 Route::group(
     ['middleware' => 'auth'],
     function () {
-        // --------------------------------------------------------------------------------------------------------KEPEGAWAIAN
-        // MODUL KEPEGAWAIAN
-        // DASHBOARD
-        Route::prefix('kepegawaian')
-            ->namespace('Kepegawaian')
-            ->middleware(['owner', 'verified'])
-            ->group(function () {
-                Route::get('/', 'DashboardpegawaiController@index')
-                    ->name('dashboardpegawai');
-            });
-
         // MASTER DATA KEPEGAWAIAN -------------------------------------------------------- Master Data Pegawai
         Route::prefix('kepegawaian/masterdatapegawai')
             ->namespace('Kepegawaian\Masterdata')
