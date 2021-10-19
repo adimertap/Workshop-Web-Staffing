@@ -16,7 +16,7 @@ class isOwner
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->role == 'owner' && Auth::user()->bengkel->status_bayar == 'belum_bayar') {
+        if (Auth::user()->role == 'owner' && Auth::user()->bengkel->status_bayar == "belum_bayar") {
             return $next($request);
         }
         abort(403);
