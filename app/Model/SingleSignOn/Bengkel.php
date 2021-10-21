@@ -23,7 +23,8 @@ class Bengkel extends Model
         'jam_buka_bengkel',
         'jam_tutup_bengkel',
         'id_kabupaten',
-        'id_desa'
+        'id_desa',
+        'status_bayar'
     ];
 
     public $timestamps = false;
