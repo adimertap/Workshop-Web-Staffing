@@ -22,7 +22,7 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     public const HOME = '/home';
-    public const SSO = '/sso';
+    public const SSO = '/kepegawaian/masterdatapegawai';
 
     /**
      * Define your route model bindings, pattern filters, etc.
