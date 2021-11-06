@@ -270,7 +270,22 @@
                 },
                 success: function (response) {
                     
-                    alert('Berhasil Menambahkan Jadwal')
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Berhasil Menambahkan Data Jadwal Pegawai'
+                    })
 
                     var form1 = $('#form1')
                     var _token = form1.find('input[name="_token"]').val()
