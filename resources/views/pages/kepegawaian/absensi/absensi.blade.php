@@ -311,8 +311,6 @@
         var absensi = $('#absensi').val()
         var id_pegawai = $('#id_pegawai').val()
         var keterangan = $('#form1').find('input[name="keterangan"]').val()
-      
-        console.log(absensi, id_pegawai, keterangan)
 
         var data = {
             _token: _token,
@@ -322,22 +320,51 @@
         }
 
         if (id_pegawai == '' | id_pegawai == 0 | id_pegawai == 'Pilih Pegawai' ) {
-            $('#alertpegawai').show()
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Anda Belum Memilih Pegawai!',
+            })
         }else if(absensi == '' | absensi == 0 | absensi == 'Pilih Absen Pegawai')
-            $('#alertabsensi').show()
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Anda Belum Memilih Absensi!',
+            })
         else {
-            
+            var sweet_loader =
+                '<div class="sweet_loader"><svg viewBox="0 0 140 140" width="140" height="140"><g class="outline"><path d="m 70 28 a 1 1 0 0 0 0 84 a 1 1 0 0 0 0 -84" stroke="rgba(0,0,0,0.1)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></g><g class="circle"><path d="m 70 28 a 1 1 0 0 0 0 84 a 1 1 0 0 0 0 -84" stroke="#71BBFF" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dashoffset="200" stroke-dasharray="300"></path></g></svg></div>';
+
             $.ajax({
                 method: 'post',
                 url: '/kepegawaian/absensi',
                 data: data,
+                beforeSend: function () {
+                    swal.fire({
+                        title: 'Mohon Tunggu!',
+                        html: 'Data Absensi Sedang Diproses...',
+                        showConfirmButton: false,
+                        onRender: function () {
+                            // there will only ever be one sweet alert open.
+                            $('.swal2-content').prepend(sweet_loader);
+                        }
+                    });
+                },
                 success: function (response) {
+                    swal.fire({
+                        icon: 'success',
+                        showConfirmButton: false,
+                        html: '<h5>Success!</h5>'
+                    });
                     window.location.href = '/kepegawaian/absensi'
-                    // alert('Berhasil Melakukan Absensi');
                 },
                 error: function (error) {
                     console.log(error)
-                    alert(error.responseJSON.message)
+                    swal.fire({
+                        icon: 'error',
+                        html: error.responseJSON.message
+                    });
+                    // alert(error.responseJSON.message)
                 }
 
             });
