@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Model\SingleSignOn\PaymentBengkel;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +17,8 @@ class isOwner
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->role == 'owner' && Auth::user()->bengkel->status_bayar == "lunas") {
+        $payment_bengkel = PaymentBengkel::where('id_bengkel', Auth::user()->bengkel->id_bengkel)->orderBy('id_payment_bengkel', 'DESC')->first();
+        if (Auth::user()->role == 'owner' && $payment_bengkel->status == 'lunas') {
             return $next($request);
         }
         abort(403);
