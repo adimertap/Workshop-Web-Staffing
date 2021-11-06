@@ -20,7 +20,7 @@
                         <span id="total_records"></span>
                         <p></p>
                         <form id="form1">
-                        <div class="row input-daterange">
+                            <div class="row input-daterange">
 
                                 <div class="col-md-5">
                                     <label class="small">Start Date</label>
@@ -50,14 +50,14 @@
                                     <button type="button" name="filter" onclick="filter_tanggal(event)"
                                         class="btn btn-sm btn-primary px-4 mt-4">Filter</button>
                                 </div>
-                        </div>
-                    </form>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </header>
-    
+
     {{-- <div class="container-fluid mt-n10">
         <div class="col-xxl-4 col-xl-12 mb-4">
             <div class="card h-100">
@@ -177,51 +177,53 @@
                                         @forelse ($absensi as $item)
                                         <tr role="row" class="odd">
                                             <th scope="row" class="small" class="sorting_1">{{ $loop->iteration}}
-                                        </th>
-                                        <td>{{ $item->tanggal_absensi }}</td>
-                                        <td>{{ $item->Pegawai->nama_pegawai }}</td>
-                                        <td>{{ $item->Pegawai->jabatan->nama_jabatan }}</td>
-                                        <td>
-                                            @if($item->absensi == 'Absen_Pagi')
-                                            <span> Masuk </span>
-                                            @elseif($item->absensi == 'Terlambat')
-                                            <span> Terlambat </span>
-                                            @elseif ($item->absensi == 'Masuk')
-                                            <span> Masuk</span>
-                                            @elseif ($item->absensi == 'Ijin' | $item->absensi == 'Sakit' |
-                                            $item->absensi == 'Cuti' | $item->absensi == 'Alpha')
-                                            {{ $item->absensi }}
-                                            @else
-                                            <span>
-                                                @endif
-                                            </span>
-                                        </td>
-                                        <td>
-                                            @if($item->absensi == 'Absen_Pagi' | $item->absensi =='Masuk' | $item->absensi == 'Terlambat')
-                                            {{ $item->jam_masuk }}
-                                            @elseif ($item->absensi == 'Ijin' | $item->absensi == 'Sakit' |
-                                            $item->absensi == 'Cuti' | $item->absensi == 'Alpha')
-                                            <span>-</span>
-                                            @else
-                                            <span>
-                                                @endif
-                                            </span>
-                                        </td>
-                                        <td>
-                                            @if($item->absensi == 'Absen_Pagi' | $item->absensi =='Masuk' | $item->absensi == 'Terlambat')
-                                            {{ $item->jam_pulang }}
-                                            @elseif ($item->absensi == 'Ijin' | $item->absensi == 'Sakit' |
-                                            $item->absensi == 'Cuti' | $item->absensi == 'Alpha')
-                                            <span>-</span>
-                                            @else
-                                            <span>
-                                                @endif
-                                            </span>
-                                        </td>
-                                        <td>{{ $item->keterangan }}</td>
+                                            </th>
+                                            <td>{{ $item->tanggal_absensi }}</td>
+                                            <td>{{ $item->Pegawai->nama_pegawai }}</td>
+                                            <td>{{ $item->Pegawai->jabatan->nama_jabatan }}</td>
+                                            <td>
+                                                @if($item->absensi == 'Absen_Pagi')
+                                                <span> Masuk </span>
+                                                @elseif($item->absensi == 'Terlambat')
+                                                <span> Terlambat </span>
+                                                @elseif ($item->absensi == 'Masuk')
+                                                <span> Masuk</span>
+                                                @elseif ($item->absensi == 'Ijin' | $item->absensi == 'Sakit' |
+                                                $item->absensi == 'Cuti' | $item->absensi == 'Alpha')
+                                                {{ $item->absensi }}
+                                                @else
+                                                <span>
+                                                    @endif
+                                                </span>
+                                            </td>
+                                            <td>
+                                                @if($item->absensi == 'Absen_Pagi' | $item->absensi =='Masuk' |
+                                                $item->absensi == 'Terlambat')
+                                                {{ $item->jam_masuk }}
+                                                @elseif ($item->absensi == 'Ijin' | $item->absensi == 'Sakit' |
+                                                $item->absensi == 'Cuti' | $item->absensi == 'Alpha')
+                                                <span>-</span>
+                                                @else
+                                                <span>
+                                                    @endif
+                                                </span>
+                                            </td>
+                                            <td>
+                                                @if($item->absensi == 'Absen_Pagi' | $item->absensi =='Masuk' |
+                                                $item->absensi == 'Terlambat')
+                                                {{ $item->jam_pulang }}
+                                                @elseif ($item->absensi == 'Ijin' | $item->absensi == 'Sakit' |
+                                                $item->absensi == 'Cuti' | $item->absensi == 'Alpha')
+                                                <span>-</span>
+                                                @else
+                                                <span>
+                                                    @endif
+                                                </span>
+                                            </td>
+                                            <td>{{ $item->keterangan }}</td>
                                         </tr>
                                         @empty
-                                       
+
                                         @endforelse
 
                                     </tbody>
@@ -238,18 +240,32 @@
 
 
 <script>
-
-    function filter_tanggal(event){
+    function filter_tanggal(event) {
         event.preventDefault()
         var form1 = $('#form1')
         var tanggal_mulai = form1.find('input[name="from_date"]').val()
         var tanggal_selesai = form1.find('input[name="to_date"]').val()
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
 
-         window.location.href = '/kepegawaian/LaporanAbsensi?from='+ tanggal_mulai + '&to=' + tanggal_selesai 
-        
+        Toast.fire({
+            icon: 'info',
+            title: 'Mohon Tunggu, Sedang diproses ...'
+        })
+
+        window.location.href = '/kepegawaian/LaporanAbsensi?from=' + tanggal_mulai + '&to=' + tanggal_selesai
+
     }
 
-   
 </script>
 
 @endsection

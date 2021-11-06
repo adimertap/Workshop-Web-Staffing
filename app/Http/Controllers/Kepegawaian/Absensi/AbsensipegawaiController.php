@@ -153,7 +153,7 @@ class AbsensipegawaiController extends Controller
 
         $absensi->update();
 
-        return redirect()->back()->with('messageberhasil','Berhasil Melakukan Absensi');
+        return redirect()->back()->with('messageberhasil','Berhasil Melakukan Absensi Pulang');
 
     }
 }
