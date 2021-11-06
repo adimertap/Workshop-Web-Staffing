@@ -362,6 +362,7 @@
                     console.log(error)
                     swal.fire({
                         icon: 'error',
+                        title: 'Oops...',
                         html: error.responseJSON.message
                     });
                     // alert(error.responseJSON.message)
