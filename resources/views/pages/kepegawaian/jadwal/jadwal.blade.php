@@ -202,7 +202,7 @@
                     response.forEach(element => {
 
                         event.push({
-                            title: 'Sudah Dijadwalkan', // a property!
+                            title: 'Dijadwalkan', // a property!
                             start: element.tanggal_jadwal, // a property!
                             end: element.tanggal_jadwal
                         })
@@ -392,7 +392,7 @@
                     })
 
                     Toast.fire({
-                        icon: 'success',
+                        icon: 'info',
                         title: 'Berhasil Menghapus Data Jadwal Pegawai'
                     })
                    makecalendar()
