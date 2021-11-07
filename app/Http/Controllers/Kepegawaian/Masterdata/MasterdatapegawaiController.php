@@ -8,6 +8,7 @@ use App\Model\Inventory\Retur\Retur;
 use App\Model\Kepegawaian\Jabatan;
 use App\Model\Kepegawaian\Pegawai;
 use App\Model\Payroll\MasterPTKP;
+use App\Model\SingleSignOn\Role;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -155,9 +156,11 @@ class MasterdatapegawaiController extends Controller
     public function destroy($id_pegawai)
     {
         $pegawai = Pegawai::findOrFail($id_pegawai);
-        User::where('id_pegawai', $id_pegawai)->delete();
+        $user = User::where('id_pegawai', $id_pegawai)->get();
+        Role::where('id_user', $user->id_user)->delete();
 
         $pegawai->delete();
+        $user->delete();
 
         return redirect()->route('pegawai.index')->with('messagehapus','Data Pegawai Berhasil dihapus');
     }
