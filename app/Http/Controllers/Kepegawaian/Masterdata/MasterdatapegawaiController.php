@@ -157,6 +157,8 @@ class MasterdatapegawaiController extends Controller
     {
         $pegawai = Pegawai::findOrFail($id_pegawai);
         $user = User::where('id_pegawai', $id_pegawai)->get();
+        return $user;
+
         Role::where('id_user', $user->id)->delete();
 
         $pegawai->delete();
