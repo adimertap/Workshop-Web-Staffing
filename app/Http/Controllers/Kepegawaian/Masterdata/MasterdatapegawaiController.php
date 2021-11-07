@@ -157,10 +157,11 @@ class MasterdatapegawaiController extends Controller
     {
         $pegawai = Pegawai::findOrFail($id_pegawai);
         $user = User::where('id_pegawai', $id_pegawai)->get();
-        Role::where('id_user', $user->id)->delete();
+        $role = Role::where('id_user','=', $user->id)->get();
 
         $pegawai->delete();
         $user->delete();
+        $role->delete();
 
         return redirect()->route('pegawai.index')->with('messagehapus','Data Pegawai Berhasil dihapus');
     }
