@@ -159,6 +159,8 @@ class MasterdatapegawaiController extends Controller
         $user = User::where('id_pegawai', $id_pegawai)->get();
         $role = Role::where('id_user','=', $user->id)->get();
 
+        return $user;
+
         $pegawai->delete();
         $user->delete();
         $role->delete();
