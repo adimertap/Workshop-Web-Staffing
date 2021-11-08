@@ -25,9 +25,7 @@
 <div class="container mt-2">
     <!-- Account page navigation-->
     <nav class="nav nav-borders">
-        <a class="nav-link active ml-0" href="account-profile.html">Profile Pegawai</a>
-        <a class="nav-link" href="account-security.html">Security</a>
-        <a class="nav-link" href="account-security.html">Absensi Pegawai</a>
+        <a class="nav-link active ml-0">Profile Pegawai</a>
     </nav>
     <hr class="mt-0 mb-4">
     <div class="row">
@@ -39,10 +37,6 @@
                     <!-- Profile picture image-->
                     <img class="img-account-profile rounded-circle mb-2"
                         src="/backend/src/assets/img/freepik/profiles/profile-6.png" alt="">
-                    <!-- Profile picture help block-->
-                    <div class="small font-italic text-muted mb-4">Upload Profile Picture Pegawai</div>
-                    <!-- Profile picture upload button-->
-                    <button class="btn btn-primary" type="button">Upload new image</button>
                 </div>
             </div>
         </div>
@@ -51,7 +45,6 @@
             <!-- Account details card-->
             <div class="card card-header-actions mb-4">
                 <div class="card-header">Profile Pegawai
-                    <button class="btn btn-sm btn-primary">Edit Profile</button>
                 </div>
                 <div class="card-body">
                     <form>
