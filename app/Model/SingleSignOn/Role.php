@@ -2,21 +2,15 @@
 
 namespace App\Model\SingleSignOn;
 
-use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
-    protected $table = 'tb_role';
+    protected $table = 'tb_sso_aplikasi';
 
-    protected $primaryKey = 'id_role';
+    protected $primaryKey = 'id_sso_aplikasi';
 
-    protected $fillable = ['role','id_user'];
+    protected $fillable = ['nama_aplikasi'];
 
     public $timestamps = false;
-
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'id', 'id_user');
-    }
 }
