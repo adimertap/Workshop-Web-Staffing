@@ -41,10 +41,10 @@
             <div class="card-body">
                 <div class="tab-content" id="cardTabContent">
                     <!-- Wizard tab pane item 1-->
-                    <div class="tab-pane py-5 fade show active" id="wizard1" role="tabpanel"
+                    <div class="tab-pane py-5 py-xl-5 fade show active" id="wizard1" role="tabpanel"
                         aria-labelledby="wizard1-tab">
                         <div class="row justify-content-center">
-                            <div class="col-xxl-6 col-xl-10">
+                            <div class="col-xxl-10 col-xl-10">
                                 @if(session('messageberhasil'))
                                 <div class="alert alert-success" role="alert"> <i class="fas fa-check"></i>
                                     {{ session('messageberhasil') }}
