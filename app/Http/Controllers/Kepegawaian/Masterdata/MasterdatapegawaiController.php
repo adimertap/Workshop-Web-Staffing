@@ -8,6 +8,7 @@ use App\Model\Inventory\Retur\Retur;
 use App\Model\Kepegawaian\Jabatan;
 use App\Model\Kepegawaian\Pegawai;
 use App\Model\Payroll\MasterPTKP;
+use App\Model\SingleSignOn\Cabang;
 use App\Model\SingleSignOn\Role;
 use App\User;
 use Illuminate\Http\Request;
@@ -48,6 +49,7 @@ class MasterdatapegawaiController extends Controller
 
         $jabatan = Jabatan::where('nama_jabatan', '!=', 'Owner')->get();
         $ptkp = MasterPTKP::get();
+        $cabang = Cabang::where('id_bengkel', Auth::user()->bengkel->id_bengkel)->get();
 
         $id = Pegawai::getId();
         foreach($id as $value);
@@ -57,7 +59,7 @@ class MasterdatapegawaiController extends Controller
 
         $kode_pegawai = $blt.$idbaru;
         
-        return view('pages.kepegawaian.masterdata.pegawai.create', compact('pegawai','jabatan','kode_pegawai','ptkp')); 
+        return view('pages.kepegawaian.masterdata.pegawai.create', compact('pegawai','jabatan','kode_pegawai','ptkp','cabang')); 
     }
 
     /**
