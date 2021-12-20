@@ -59,39 +59,41 @@
                                     @csrf
 
                                     @if (Auth::user()->pegawai->jabatan->nama_jabatan == 'Owner')
-                                        <div class="row">
-                                            <div class="form-group col-md-6">
-                                                <div class="row mb-1" id="radio1">
-                                                    <div class="col-md-6">
-                                                        <input class="mr-1" value="Tidak Pegawai Cabang" type="radio" name="radio2" checked>Tidak Pegawai Cabang
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <input class="mr-1" value="Pegawai Cabang" type="radio" name="radio2">Pegawai Cabang
-                                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <div class="row mb-1" id="radio1">
+                                                <div class="col-md-6">
+                                                    <input class="mr-1" value="Tidak Pegawai Cabang" type="radio"
+                                                        name="radio2" checked>Tidak Pegawai Cabang
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input class="mr-1" value="Pegawai Cabang" type="radio"
+                                                        name="radio2">Pegawai Cabang
                                                 </div>
                                             </div>
-                                            <div class="form-group col-md-6" id="Pegawai Cabangs" style="display:none">
-                                                <label class="small mb-1 mr-1" for="id_cabang">Cabang</label><span
-                                                    class="mr-4 mb-3" style="color: red">*</span>
-                                                <select class="form-control" name="id_cabang" id="id_cabang"
-                                                    value="{{ old('id_cabang') }}"
-                                                    class="form-control @error('id_cabang') is-invalid @enderror">
-                                                    <option>Pilih Cabang</option>
-                                                    @foreach ($cabang as $cabangs)
-                                                    <option value="{{ $cabangs->id_cabang }}">{{ $cabangs->nama_cabang }}
-                                                    </option>
-                                                    @endforeach
-                                                </select>
-                                                @error('id_cabang')<div class="text-danger small mb-1">{{ $message }}
-                                                </div> @enderror
-                                            </div>
                                         </div>
+                                        <div class="form-group col-md-6" id="PegawaiCabangs" style="display:none">
+                                            <label class="small mb-1 mr-1" for="id_cabang">Cabang</label><span
+                                                class="mr-4 mb-3" style="color: red">*</span>
+                                            <select class="form-control" name="id_cabang" id="id_cabang"
+                                                value="{{ old('id_cabang') }}"
+                                                class="form-control @error('id_cabang') is-invalid @enderror">
+                                                <option>Pilih Cabang</option>
+                                                @foreach ($cabang as $cabangs)
+                                                <option value="{{ $cabangs->id_cabang }}">{{ $cabangs->nama_cabang }}
+                                                </option>
+                                                @endforeach
+                                            </select>
+                                            @error('id_cabang')<div class="text-danger small mb-1">{{ $message }}
+                                            </div> @enderror
+                                        </div>
+                                    </div>
 
-                                   
+
                                     @else
 
 
-                                        
+
                                     @endif
 
 
@@ -105,7 +107,7 @@
                                         </div> @enderror
                                     </div>
 
-                                   
+
                                     <div class="form-row">
                                         <div class="form-group col-md-4">
                                             <label class="small mb-1 mr-1" for="nama_panggilan">Nama
@@ -259,12 +261,13 @@
                                                 @endforeach
                                             </select>
                                             </label><span class="small" style="color: gray">Cek aturan PTKP <a
-                                                    target="_blank" href="{{ url('https://payroll.bengkel-kuy.com/payroll/ptkp') }}"
+                                                    target="_blank"
+                                                    href="{{ url('https://payroll.bengkel-kuy.com/payroll/ptkp') }}"
                                                     class="font-weight-500 text-primary"> disini </a></span>
-                                                    @error('id_ptkp')<div class="text-danger small mb-1">{{ $message }}
-                                                    </div> @enderror
+                                            @error('id_ptkp')<div class="text-danger small mb-1">{{ $message }}
+                                            </div> @enderror
                                         </div>
-                                      
+
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-4">
@@ -337,18 +340,20 @@
 @endsection
 
 <script>
-      $(document).ready(function () {
+    
+    $(document).ready(function () {
         $("#radio1").change(function () {
             var value = $("input[name='radio2']:checked").val();
 
             if (value == 'Pegawai Cabang') {
-                $('#Pegawai Cabangs').show()
+                $('#PegawaiCabangs').show()
             } else {
-                $('#Pegawai Cabangs').hide()
+                $('#PegawaiCabangs').hide()
             }
 
 
         });
 
     });
+
 </script>
