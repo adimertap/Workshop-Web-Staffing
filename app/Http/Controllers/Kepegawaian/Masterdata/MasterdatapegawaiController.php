@@ -25,12 +25,12 @@ class MasterdatapegawaiController extends Controller
     public function index()
     {
         $pegawai = Pegawai::with([
-            'Jabatan'
+            'Jabatan','cabang'
         ])->join('tb_kepeg_master_jabatan', 'tb_kepeg_master_pegawai.id_jabatan', 'tb_kepeg_master_jabatan.id_jabatan')
         ->where('nama_jabatan', '!=', 'Owner')->get();
 
         $jumlah_pegawai = Pegawai::with([
-            'Jabatan'
+            'Jabatan','cabang'
         ])->join('tb_kepeg_master_jabatan', 'tb_kepeg_master_pegawai.id_jabatan', 'tb_kepeg_master_jabatan.id_jabatan')
         ->where('nama_jabatan', '!=', 'Owner')->count();
 

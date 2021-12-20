@@ -91,7 +91,7 @@
                                             style="width: 60px;">Jenis Kelamin</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                             colspan="1" aria-label="Salary: activate to sort column ascending"
-                                            style="width: 90px;">No Telephone</th>
+                                            style="width: 90px;">Lokasi Cabang</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                             colspan="1" aria-label="Actions: activate to sort column ascending"
                                             style="width: 130px;">Actions</th>
@@ -106,7 +106,13 @@
                                         <td>{{ $item->jabatan->nama_jabatan }}</td>
                                         <td>{{ $item->alamat }}</td>
                                         <td>{{ $item->jenis_kelamin }}</td>
-                                        <td>{{ $item->no_telp }}</td>
+
+                                        @if ($item->status_cabang == 'Pegawai Cabang')
+                                            <td>{{ $item->cabang->nama_cabang }}</td>
+                                        @else
+                                            <td>Pusat</td>
+                                        @endif
+
                                         <td>
                                             <a href="{{ route('pegawai.show', $item->id_pegawai) }}"
                                                 class="btn btn-secondary btn-datatable">
