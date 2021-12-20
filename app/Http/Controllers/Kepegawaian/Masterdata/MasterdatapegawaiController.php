@@ -144,11 +144,13 @@ class MasterdatapegawaiController extends Controller
         $item = Pegawai::with('ptkp')->findOrFail($id_pegawai);
         $jabatan = Jabatan::all();
         $ptkp = MasterPTKP::get();
+        $cabang = Cabang::where('id_bengkel', Auth::user()->bengkel->id_bengkel)->get();
 
         return view('pages.kepegawaian.masterdata.pegawai.edit',[
             'item' => $item,
             'jabatan' => $jabatan,
-            'ptkp' => $ptkp
+            'ptkp' => $ptkp,
+            'cabang' => $cabang
         ]);
 
     }
@@ -163,9 +165,31 @@ class MasterdatapegawaiController extends Controller
     public function update(Request $request, $id_pegawai)
     {
         $item = Pegawai::findOrFail($id_pegawai);
-        $data = $request->all();
+        $item->id_bengkel = $request['id_bengkel'] = Auth::user()->id_bengkel;
+        $item->nik_pegawai = $request->nik_pegawai;
+        $item->npwp_pegawai = $request->npwp_pegawai;
+        $item->id_jabatan = $request->id_jabatan;
+        $item->nama_pegawai = $request->nama_pegawai;
+        $item->nama_panggilan = $request->nama_panggilan;
+        $item->tempat_lahir = $request->tempat_lahir;
+        $item->tanggal_lahir = $request->tanggal_lahir;
+        $item->jenis_kelamin = $request->jenis_kelamin;
+        $item->alamat = $request->alamat;
+        $item->kota_asal = $request->kota_asal;
+        $item->no_telp = $request->no_telp;
+        $item->agama = $request->agama;
+        $item->pendidikan_terakhir = $request->pendidikan_terakhir;
+        $item->tanggal_masuk = $request->tanggal_masuk;
+        $item->id_ptkp= $request->id_ptkp;
+        if($request->status_cabang == 'Pegawai Cabang'){
+            $item->id_cabang = $request->id_cabang;
+            $item->status_cabang = 'Pegawai Cabang';
+        }else{
+            $item->status_cabang = 'Tidak Pegawai Cabang';
+        }
 
-        $item->update($data);
+
+        $item->update();
 
         
         return redirect()->route('pegawai.index')->with('messageberhasil','Data Pegawai Berhasil diubah');

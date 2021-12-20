@@ -60,11 +60,48 @@
                                 <form action="{{ route('pegawai.update', $item->id_pegawai) }}" method="POST">
                                     @method('PUT')
                                     @csrf
-                                        <div class="form-group">
-                                            <label class="small mb-1" for="nama_pegawai">Nama Lengkap</label>
-                                            <input class="form-control" id="nama_pegawai" type="text"
-                                                name="nama_pegawai" value="{{ $item->nama_pegawai }}" required/>
+
+                                    @if (Auth::user()->pegawai->jabatan->nama_jabatan == 'Owner')
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <div class="row" id="radio1">
+                                                <div class="col-md-6">
+                                                    <input class="mr-1" value="Tidak Pegawai Cabang" type="radio"
+                                                        name="status_cabang" checked>Tidak Pegawai Cabang
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input class="mr-1" value="Pegawai Cabang" type="radio"
+                                                        name="status_cabang">Pegawai Cabang
+                                                </div>
+                                            </div>
                                         </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label class="small mb-1" for="id_cabang">Cabang</label>
+                                            <select class="form-control" name="id_cabang" id="id_cabang" required>
+                                                <option value="{{ $item->cabang->id_cabang }}">{{ $item->cabang->nama_cabang }}</option>
+                                                @foreach ($cabang as $cabangs)
+                                                    <option value="{{ $cabangs->id_cabang }}">{{ $cabangs->nama_cabang }}
+                                                </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    @else
+
+
+                                    @endif
+
+
+
+
+                                    <div class="form-group">
+                                        <label class="small mb-1" for="nama_pegawai">Nama Lengkap</label>
+                                        <input class="form-control" id="nama_pegawai" type="text"
+                                            name="nama_pegawai" value="{{ $item->nama_pegawai }}" required/>
+                                    </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-4">
                                             <label class="small mb-1" for="nama_panggilan">Nama Panggilan</label>
@@ -193,6 +230,18 @@
 <script>
     $(document).ready(function () {
         $('#validasierror').click();
+
+        $("#radio1").change(function () {
+            var value = $("input[name='status_cabang']:checked").val();
+
+            if (value == 'Pegawai Cabang') {
+                $('#PegawaiCabangs').show()
+            } else {
+                $('#PegawaiCabangs').hide()
+            }
+
+
+        });
     });
 
 </script>
