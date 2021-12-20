@@ -337,10 +337,10 @@
     </div>
 </div>
 
-@endsection
+
 
 <script>
-    
+
     $(document).ready(function () {
         $("#radio1").change(function () {
             var value = $("input[name='radio2']:checked").val();
@@ -357,3 +357,4 @@
     });
 
 </script>
+@endsection
