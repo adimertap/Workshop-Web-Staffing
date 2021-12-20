@@ -24,15 +24,31 @@ class MasterdatapegawaiController extends Controller
      */
     public function index()
     {
-        $pegawai = Pegawai::with([
-            'Jabatan','cabang'
-        ])->join('tb_kepeg_master_jabatan', 'tb_kepeg_master_pegawai.id_jabatan', 'tb_kepeg_master_jabatan.id_jabatan')
-        ->where('nama_jabatan', '!=', 'Owner')->get();
 
-        $jumlah_pegawai = Pegawai::with([
-            'Jabatan','cabang'
-        ])->join('tb_kepeg_master_jabatan', 'tb_kepeg_master_pegawai.id_jabatan', 'tb_kepeg_master_jabatan.id_jabatan')
-        ->where('nama_jabatan', '!=', 'Owner')->count();
+        if(auth::user()->pegawai->jabatan->nama_jabatan == 'Owner'){
+            $pegawai = Pegawai::with([
+                'Jabatan','cabang'
+            ])->join('tb_kepeg_master_jabatan', 'tb_kepeg_master_pegawai.id_jabatan', 'tb_kepeg_master_jabatan.id_jabatan')
+                ->where('nama_jabatan', '!=', 'Owner')->get();
+    
+            $jumlah_pegawai = Pegawai::with([
+                'Jabatan','cabang'
+            ])->join('tb_kepeg_master_jabatan', 'tb_kepeg_master_pegawai.id_jabatan', 'tb_kepeg_master_jabatan.id_jabatan')
+                ->where('nama_jabatan', '!=', 'Owner')->count();
+        }else{
+            $pegawai = Pegawai::with([
+                'Jabatan','cabang'
+            ])->join('tb_kepeg_master_jabatan', 'tb_kepeg_master_pegawai.id_jabatan', 'tb_kepeg_master_jabatan.id_jabatan')
+                ->where('nama_jabatan', '!=', 'Owner')->where('nama_jabatan', '!=', 'Kepala Cabang')->where('id_cabang', Auth::user()->pegawai->cabang->id_cabang)->get();
+    
+            $jumlah_pegawai = Pegawai::with([
+                'Jabatan','cabang'
+            ])->join('tb_kepeg_master_jabatan', 'tb_kepeg_master_pegawai.id_jabatan', 'tb_kepeg_master_jabatan.id_jabatan')
+                ->where('nama_jabatan', '!=', 'Owner')->where('nama_jabatan', '!=', 'Kepala Cabang')->where('id_cabang', Auth::user()->pegawai->cabang->id_cabang)->count();
+        }
+
+
+       
 
         return view('pages.kepegawaian.masterdata.pegawai.pegawai', compact('pegawai','jumlah_pegawai'));
     }

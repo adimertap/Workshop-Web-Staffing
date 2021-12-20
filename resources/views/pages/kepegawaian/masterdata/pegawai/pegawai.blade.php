@@ -91,7 +91,7 @@
                                             style="width: 60px;">Jenis Kelamin</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                             colspan="1" aria-label="Salary: activate to sort column ascending"
-                                            style="width: 90px;">Lokasi Cabang</th>
+                                            style="width: 90px;">Penempatan</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                             colspan="1" aria-label="Actions: activate to sort column ascending"
                                             style="width: 130px;">Actions</th>
