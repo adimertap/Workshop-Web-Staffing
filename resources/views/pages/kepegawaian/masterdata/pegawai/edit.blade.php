@@ -76,20 +76,41 @@
                                                             name="status_cabang" checked>Pegawai Cabang
                                                     </div>
                                                 @else
-                                                <div class="col-md-6">
-                                                    <input class="mr-1" value="Tidak Pegawai Cabang" type="radio"
-                                                        name="status_cabang" checked>Tidak Pegawai Cabang
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <input class="mr-1" value="Pegawai Cabang" type="radio"
-                                                        name="status_cabang">Pegawai Cabang
-                                                </div>
+                                                    <div class="col-md-6">
+                                                        <input class="mr-1" value="Tidak Pegawai Cabang" type="radio"
+                                                            name="status_cabang" checked>Tidak Pegawai Cabang
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input class="mr-1" value="Pegawai Cabang" type="radio"
+                                                            name="status_cabang">Pegawai Cabang
+                                                    </div>
                                                 @endif
 
                                               
                                             </div>
                                         </div>
                                     </div>
+
+                                    
+                                    @else
+
+
+                                    @endif
+                                    
+                                    @if ($item->status_cabang == 'Pegawai Cabang')
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6" id="PegawaiCabangs">
+                                                <label class="small mb-1" for="id_cabang">Cabang</label>
+                                                <select class="form-control" name="id_cabang" id="id_cabang" required>
+                                                    <option value="{{ $item->cabang->id_cabang ?? '' }}">{{ $item->cabang->nama_cabang ?? '' }}</option>
+                                                    @foreach ($cabang as $cabangs)
+                                                        <option value="{{ $cabangs->id_cabang }}">{{ $cabangs->nama_cabang }}
+                                                    </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    @else
                                     <div class="form-row">
                                         <div class="form-group col-md-6" id="PegawaiCabangs" style="display:none">
                                             <label class="small mb-1" for="id_cabang">Cabang</label>
@@ -102,11 +123,9 @@
                                             </select>
                                         </div>
                                     </div>
-
-                                    @else
-
-
                                     @endif
+                                    
+
 
 
 
