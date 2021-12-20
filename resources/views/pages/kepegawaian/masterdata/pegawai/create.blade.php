@@ -58,7 +58,7 @@
                                 <form action="{{ route('pegawai.store') }}" method="POST">
                                     @csrf
 
-                                 
+                                    @if (Auth::user()->pegawai->jabatan->nama_jabatan == 'Owner')
                                         <div class="row">
                                             <div class="form-group col-md-6">
                                                 <div class="row mb-1" id="radio1">
@@ -88,7 +88,11 @@
                                         </div>
 
                                    
-                                   
+                                    @else
+
+
+                                        
+                                    @endif
 
 
                                     <div class="form-group">
