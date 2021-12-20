@@ -64,11 +64,11 @@
                                             <div class="row" id="radio1">
                                                 <div class="col-md-6">
                                                     <input class="mr-1" value="Tidak Pegawai Cabang" type="radio"
-                                                        name="radio2" checked>Tidak Pegawai Cabang
+                                                        name="status_cabang" checked>Tidak Pegawai Cabang
                                                 </div>
                                                 <div class="col-md-6">
                                                     <input class="mr-1" value="Pegawai Cabang" type="radio"
-                                                        name="radio2">Pegawai Cabang
+                                                        name="status_cabang">Pegawai Cabang
                                                 </div>
                                             </div>
                                         </div>
@@ -345,7 +345,7 @@
 <script>
     $(document).ready(function () {
         $("#radio1").change(function () {
-            var value = $("input[name='radio2']:checked").val();
+            var value = $("input[name='status_cabang']:checked").val();
 
             if (value == 'Pegawai Cabang') {
                 $('#PegawaiCabangs').show()
