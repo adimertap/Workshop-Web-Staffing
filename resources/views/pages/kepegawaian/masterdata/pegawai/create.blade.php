@@ -59,35 +59,35 @@
                                     @csrf
 
                                     @if (Auth::user()->pegawai->jabatan->nama_jabatan == 'Owner')
-                                    <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <div class="row mb-1" id="radio1">
-                                                <div class="col-md-6">
-                                                    <input class="mr-1" value="Tidak Pegawai Cabang" type="radio"
-                                                        name="radio2" checked>Tidak Pegawai Cabang
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <input class="mr-1" value="Pegawai Cabang" type="radio"
-                                                        name="radio2">Pegawai Cabang
-                                                </div>
+                                    
+                                    <div class="form-group col-md-6">
+                                        <div class="row" id="radio1">
+                                            <div class="col-md-6">
+                                                <input class="mr-1" value="Tidak Pegawai Cabang" type="radio"
+                                                    name="radio2" checked>Tidak Pegawai Cabang
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input class="mr-1" value="Pegawai Cabang" type="radio"
+                                                    name="radio2">Pegawai Cabang
                                             </div>
                                         </div>
-                                        <div class="form-group col-md-6" id="PegawaiCabangs" style="display:none">
-                                            <label class="small mb-1 mr-1" for="id_cabang">Cabang</label><span
-                                                class="mr-4 mb-3" style="color: red">*</span>
-                                            <select class="form-control" name="id_cabang" id="id_cabang"
-                                                value="{{ old('id_cabang') }}"
-                                                class="form-control @error('id_cabang') is-invalid @enderror">
-                                                <option>Pilih Cabang</option>
-                                                @foreach ($cabang as $cabangs)
-                                                <option value="{{ $cabangs->id_cabang }}">{{ $cabangs->nama_cabang }}
-                                                </option>
-                                                @endforeach
-                                            </select>
-                                            @error('id_cabang')<div class="text-danger small mb-1">{{ $message }}
-                                            </div> @enderror
-                                        </div>
                                     </div>
+                                    <div class="form-group col-md-6" id="PegawaiCabangs" style="display:none">
+                                        <label class="small mb-1 mr-1" for="id_cabang">Cabang</label><span
+                                            class="mr-4 mb-3" style="color: red">*</span>
+                                        <select class="form-control" name="id_cabang" id="id_cabang"
+                                            value="{{ old('id_cabang') }}"
+                                            class="form-control @error('id_cabang') is-invalid @enderror">
+                                            <option>Pilih Cabang</option>
+                                            @foreach ($cabang as $cabangs)
+                                            <option value="{{ $cabangs->id_cabang }}">{{ $cabangs->nama_cabang }}
+                                            </option>
+                                            @endforeach
+                                        </select>
+                                        @error('id_cabang')<div class="text-danger small mb-1">{{ $message }}
+                                        </div> @enderror
+                                    </div>
+                                  
 
 
                                     @else
