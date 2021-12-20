@@ -80,7 +80,10 @@
                                         <div class="form-group col-md-6">
                                             <label class="small mb-1" for="id_cabang">Cabang</label>
                                             <select class="form-control" name="id_cabang" id="id_cabang" required>
-                                                <option value="{{ $item->cabang->id_cabang }}">{{ $item->cabang->nama_cabang }}</option>
+                                                
+                                                
+
+                                                <option value="{{ $item->cabang->id_cabang ?? '' }}">{{ $item->cabang->nama_cabang ?? '' }}</option>
                                                 @foreach ($cabang as $cabangs)
                                                     <option value="{{ $cabangs->id_cabang }}">{{ $cabangs->nama_cabang }}
                                                 </option>
