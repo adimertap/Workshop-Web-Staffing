@@ -181,6 +181,7 @@ class MasterdatapegawaiController extends Controller
         $item->pendidikan_terakhir = $request->pendidikan_terakhir;
         $item->tanggal_masuk = $request->tanggal_masuk;
         $item->id_ptkp= $request->id_ptkp;
+        
         if($request->status_cabang == 'Pegawai Cabang'){
             $item->id_cabang = $request->id_cabang;
             $item->status_cabang = 'Pegawai Cabang';
