@@ -41,7 +41,7 @@ class JadwalpegawaiController extends Controller
         $pegawaimasuk = Pegawai::leftJoin('tb_kepeg_jadwal', 'tb_kepeg_master_pegawai.id_pegawai', 'tb_kepeg_jadwal.id_pegawai')
         ->join('tb_kepeg_master_jabatan', 'tb_kepeg_master_pegawai.id_jabatan', 'tb_kepeg_master_jabatan.id_jabatan')
         ->select('tb_kepeg_master_pegawai.id_pegawai', 'nama_pegawai','nama_jabatan','tanggal_jadwal','id_cabang')
-        ->whereIn('tb_kepeg_master_pegawai.id_cabang', Auth::user()->pegawai->id_cabang)
+        ->where('tb_kepeg_master_pegawai.id_cabang', Auth::user()->pegawai->id_cabang)
         ->whereIn('tb_kepeg_master_pegawai.id_pegawai', $id_pegawai)
         ->whereDate('tanggal_jadwal', $request->date);
 
