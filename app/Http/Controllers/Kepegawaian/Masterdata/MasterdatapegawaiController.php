@@ -103,8 +103,12 @@ class MasterdatapegawaiController extends Controller
         $pegawai->pendidikan_terakhir = $request->pendidikan_terakhir;
         $pegawai->tanggal_masuk = $request->tanggal_masuk;
         $pegawai->id_ptkp= $request->id_ptkp;
+
         if($request->status_cabang == 'Pegawai Cabang'){
             $pegawai->id_cabang = $request->id_cabang;
+            $pegawai->status_cabang = 'Pegawai Cabang';
+        }else if(auth::user()->pegawai->jabatan->nama_jabatan == 'Kepala Cabang'){
+            $pegawai->id_cabang = auth::user()->pegawai->id_cabang;
             $pegawai->status_cabang = 'Pegawai Cabang';
         }else{
             $pegawai->status_cabang = 'Tidak Pegawai Cabang';
