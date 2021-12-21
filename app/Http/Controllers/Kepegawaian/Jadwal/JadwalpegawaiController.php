@@ -35,8 +35,6 @@ class JadwalpegawaiController extends Controller
 
     public function getJadwal(Request $request){
 
-      
-
         $id_pegawai = Pegawai::join('tb_kepeg_master_jabatan', 'tb_kepeg_master_pegawai.id_jabatan', 'tb_kepeg_master_jabatan.id_jabatan')
         ->where('nama_jabatan', '!=', 'Owner')->pluck('id_pegawai')->toArray();
 
@@ -46,7 +44,7 @@ class JadwalpegawaiController extends Controller
         ->whereIn('tb_kepeg_master_pegawai.id_pegawai', $id_pegawai)
         ->whereDate('tanggal_jadwal', $request->date);
 
-        // return $pegawaimasuk->get();
+        return $pegawaimasuk->get();
 
         $pegawailibur = Pegawai::leftJoin('tb_kepeg_jadwal', function($join) use($request){
             $join->on('tanggal_jadwal', '=',DB::raw("'".$request->date."'"))->on('tb_kepeg_jadwal.id_pegawai', 'tb_kepeg_master_pegawai.id_pegawai');
