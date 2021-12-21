@@ -24,11 +24,11 @@ class JadwalpegawaiController extends Controller
     {
 
         $bengkel = Auth::user()->bengkel;
-        return $bengkel;
+       
 
         $today = Carbon::now()->isoFormat('dddd');
         $tanggal = Carbon::now()->format('j F Y');
-        $status_cabang = Pegawai::pluck('status_cabang')->toArray();
+        $status_cabang = Pegawai::pluck('status_cabang');
         return $status_cabang;
        
 
