@@ -28,8 +28,9 @@ class JadwalpegawaiController extends Controller
 
         $today = Carbon::now()->isoFormat('dddd');
         $tanggal = Carbon::now()->format('j F Y');
-        $status_cabang = Pegawai::pluck('status_cabang');
-        return $status_cabang;
+        $id_pegawai = Pegawai::join('tb_kepeg_master_jabatan', 'tb_kepeg_master_pegawai.id_jabatan', 'tb_kepeg_master_jabatan.id_jabatan')
+        ->where('nama_jabatan', '!=', 'Owner')->pluck('id_pegawai','id_cabang')->toArray();
+        return $id_pegawai;
        
 
         return view('pages.kepegawaian.jadwal.jadwal', compact('today', 'tanggal','bengkel'));
