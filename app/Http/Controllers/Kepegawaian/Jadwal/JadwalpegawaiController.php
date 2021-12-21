@@ -24,6 +24,7 @@ class JadwalpegawaiController extends Controller
     {
 
         $bengkel = Auth::user()->bengkel;
+        return $bengkel;
 
         $today = Carbon::now()->isoFormat('dddd');
         $tanggal = Carbon::now()->format('j F Y');
