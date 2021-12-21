@@ -47,9 +47,6 @@ class MasterdatapegawaiController extends Controller
                 ->where('nama_jabatan', '!=', 'Owner')->where('nama_jabatan', '!=', 'Kepala Cabang')->where('id_cabang', Auth::user()->pegawai->cabang->id_cabang)->count();
         }
 
-
-       
-
         return view('pages.kepegawaian.masterdata.pegawai.pegawai', compact('pegawai','jumlah_pegawai'));
     }
 
