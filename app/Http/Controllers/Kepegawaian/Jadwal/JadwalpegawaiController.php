@@ -40,31 +40,11 @@ class JadwalpegawaiController extends Controller
         $id_pegawai = Pegawai::join('tb_kepeg_master_jabatan', 'tb_kepeg_master_pegawai.id_jabatan', 'tb_kepeg_master_jabatan.id_jabatan')
         ->where('nama_jabatan', '!=', 'Owner')->pluck('id_pegawai')->toArray();
 
-        $status_cabang = Auth::user()->pegawai->status_cabang;
-       
-
-        if(Auth::user()->pegawai->status_cabang == 'Pegawai Cabang'){
-            $pegawaimasuk = Pegawai::leftJoin('tb_kepeg_jadwal', 'tb_kepeg_master_pegawai.id_pegawai', 'tb_kepeg_jadwal.id_pegawai')
-            ->join('tb_kepeg_master_jabatan', 'tb_kepeg_master_pegawai.id_jabatan', 'tb_kepeg_master_jabatan.id_jabatan')
-            ->select('tb_kepeg_master_pegawai.id_pegawai', 'nama_pegawai','nama_jabatan','tanggal_jadwal')
-            ->whereIn('tb_kepeg_master_pegawai.id_pegawai', $id_pegawai)
-            ->whereDate('tanggal_jadwal', $request->date);
-            
-           
-        }else{
-            //  $pegawaimasuk = Pegawai::leftJoin('tb_kepeg_jadwal', 'tb_kepeg_master_pegawai.id_pegawai', 'tb_kepeg_jadwal.id_pegawai')
-            // ->join('tb_kepeg_master_jabatan', 'tb_kepeg_master_pegawai.id_jabatan', 'tb_kepeg_master_jabatan.id_jabatan')
-            // ->select('tb_kepeg_master_pegawai.id_pegawai', 'nama_pegawai','nama_jabatan','tanggal_jadwal')
-            // ->whereIn('tb_kepeg_master_pegawai.id_pegawai', $id_pegawai)
-            // ->whereDate('tanggal_jadwal', $request->date);
-        }
-       
-     
-        // $pegawaimasuk = Pegawai::leftJoin('tb_kepeg_jadwal', 'tb_kepeg_master_pegawai.id_pegawai', 'tb_kepeg_jadwal.id_pegawai')
-        // ->join('tb_kepeg_master_jabatan', 'tb_kepeg_master_pegawai.id_jabatan', 'tb_kepeg_master_jabatan.id_jabatan')
-        // ->select('tb_kepeg_master_pegawai.id_pegawai', 'nama_pegawai','nama_jabatan','tanggal_jadwal')
-        // ->whereIn('tb_kepeg_master_pegawai.id_pegawai', $id_pegawai)
-        // ->whereDate('tanggal_jadwal', $request->date);
+        $pegawaimasuk = Pegawai::leftJoin('tb_kepeg_jadwal', 'tb_kepeg_master_pegawai.id_pegawai', 'tb_kepeg_jadwal.id_pegawai')
+        ->join('tb_kepeg_master_jabatan', 'tb_kepeg_master_pegawai.id_jabatan', 'tb_kepeg_master_jabatan.id_jabatan')
+        ->select('tb_kepeg_master_pegawai.id_pegawai', 'nama_pegawai','nama_jabatan','tanggal_jadwal')
+        ->whereIn('tb_kepeg_master_pegawai.id_pegawai', $id_pegawai)
+        ->whereDate('tanggal_jadwal', $request->date);
 
         // return $pegawaimasuk->get();
 
