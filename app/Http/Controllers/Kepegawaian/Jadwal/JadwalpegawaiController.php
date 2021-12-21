@@ -38,7 +38,7 @@ class JadwalpegawaiController extends Controller
 
         $id_pegawai = Pegawai::join('tb_kepeg_master_jabatan', 'tb_kepeg_master_pegawai.id_jabatan', 'tb_kepeg_master_jabatan.id_jabatan')
         ->where('nama_jabatan', '!=', 'Owner')->pluck('id_pegawai')->toArray();
-        return $id_pegawai;
+     
 
         // return $request->date;
 
