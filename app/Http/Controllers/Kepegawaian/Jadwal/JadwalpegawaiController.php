@@ -28,6 +28,8 @@ class JadwalpegawaiController extends Controller
 
         $today = Carbon::now()->isoFormat('dddd');
         $tanggal = Carbon::now()->format('j F Y');
+        $status_cabang = Auth::user()->pegawai->status_cabang;
+        return $status_cabang;
 
         return view('pages.kepegawaian.jadwal.jadwal', compact('today', 'tanggal','bengkel'));
     }
