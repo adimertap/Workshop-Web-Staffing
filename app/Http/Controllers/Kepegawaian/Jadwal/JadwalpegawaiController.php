@@ -49,7 +49,7 @@ class JadwalpegawaiController extends Controller
             ->select('tb_kepeg_master_pegawai.id_pegawai', 'nama_pegawai','nama_jabatan','tanggal_jadwal')
             ->whereIn('tb_kepeg_master_pegawai.id_pegawai', $id_pegawai)
             ->whereDate('tanggal_jadwal', $request->date);
-            return $pegawaimasuk;
+            
            
         }else{
             //  $pegawaimasuk = Pegawai::leftJoin('tb_kepeg_jadwal', 'tb_kepeg_master_pegawai.id_pegawai', 'tb_kepeg_jadwal.id_pegawai')
