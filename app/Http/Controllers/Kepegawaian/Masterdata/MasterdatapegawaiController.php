@@ -25,7 +25,7 @@ class MasterdatapegawaiController extends Controller
     public function index()
     {
 
-        if(auth::user()->pegawai->jabatan->nama_jabatan == 'Owner'){
+        if(auth::user()->pegawai->cabang == null){
             $pegawai = Pegawai::with([
                 'Jabatan','cabang'
             ])->join('tb_kepeg_master_jabatan', 'tb_kepeg_master_pegawai.id_jabatan', 'tb_kepeg_master_jabatan.id_jabatan')
