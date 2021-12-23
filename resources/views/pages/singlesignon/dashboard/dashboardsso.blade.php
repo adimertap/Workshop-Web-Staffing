@@ -186,8 +186,7 @@
 {{-- BARIS 2 --}}
 <div class="container">
     <div class="row">
-        @if (Auth::user()->hasRole('Aplikasi Gudang') || Auth::user()->hasRole('Aplikasi Purchasing') || Auth::user()->role ==
-        'owner' || Auth::user()->hasRole('Aplikasi Accounting'))
+        @if (Auth::user()->hasRole('Aplikasi Gudang') || Auth::user()->hasRole('Aplikasi Purchasing') || Auth::user()->pegawai->jabatan->nama_jabatan == 'Owner' || Auth::user()->hasRole('Aplikasi Accounting'))
         <div class="col-3 mt-4">
             <!-- Dashboard example card 1-->
             <a class="card lift h-100" href="{{ route('dashboardinventory') }}">

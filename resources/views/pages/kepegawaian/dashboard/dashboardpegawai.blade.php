@@ -15,7 +15,14 @@
             <div class="small">
                 <i class="fa fa-cogs" aria-hidden="true"></i>
                 Bengkel
-                <span class="font-weight-500 text-primary">{{ Auth::user()->bengkel->nama_bengkel}}</span>
+                <span class="font-weight-500 text-primary">{{ Auth::user()->bengkel->nama_bengkel}}
+                    @if (Auth::user()->pegawai->cabang != null)
+                    {{ Auth::user()->pegawai->cabang->nama_cabang }}
+                    @else
+
+                    @endif
+
+                </span>
                 <hr>
                 </hr>
             </div>
@@ -55,10 +62,11 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <label class="small text-muted line-height-normal">: {{ Auth::user()->pegawai->nama_pegawai }}
+                                <label class="small text-muted line-height-normal">:
+                                    {{ Auth::user()->pegawai->nama_pegawai }}
                             </div>
                         </div>
-                        
+
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="d-flex flex-column font-weight-bold">
@@ -200,39 +208,40 @@
 <script>
     setInterval(displayclock, 500);
 
-   function displayclock() {
-       var time = new Date()
-       var hrs = time.getHours()
-       var min = time.getMinutes()
-       var sec = time.getSeconds()
-       var en = 'AM';
+    function displayclock() {
+        var time = new Date()
+        var hrs = time.getHours()
+        var min = time.getMinutes()
+        var sec = time.getSeconds()
+        var en = 'AM';
 
-       if (hrs > 12) {
-           en = 'PM'
-       }
+        if (hrs > 12) {
+            en = 'PM'
+        }
 
-       if (hrs > 12) {
-           hrs = hrs - 12;
-       }
+        if (hrs > 12) {
+            hrs = hrs - 12;
+        }
 
-       if (hrs == 0) {
-           hrs = 12;
-       }
+        if (hrs == 0) {
+            hrs = 12;
+        }
 
-       if (hrs < 10) {
-           hrs = '0' + hrs;
-       }
+        if (hrs < 10) {
+            hrs = '0' + hrs;
+        }
 
-       if (min < 10) {
-           min = '0' + min;
-       }
+        if (min < 10) {
+            min = '0' + min;
+        }
 
-       if (sec < 10) {
-           sec = '0' + sec;
-       }
+        if (sec < 10) {
+            sec = '0' + sec;
+        }
 
-       document.getElementById('clock').innerHTML = hrs + ':' + min + ':' + sec + ' ' + en;
-   }
+        document.getElementById('clock').innerHTML = hrs + ':' + min + ':' + sec + ' ' + en;
+    }
+
 </script>
 
 @endsection
