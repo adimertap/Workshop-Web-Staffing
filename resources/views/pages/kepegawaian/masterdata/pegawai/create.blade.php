@@ -265,7 +265,7 @@
                                             </select>
                                             </label><span class="small" style="color: gray">Cek aturan PTKP <a
                                                     target="_blank"
-                                                    href="{{ url('https://payroll.bengkel-kuy.com/payroll/ptkp') }}"
+                                                    href="{{ url('https://payroll.e-bengkelku.com/payroll/ptkp') }}"
                                                     class="font-weight-500 text-primary"> disini </a></span>
                                             @error('id_ptkp')<div class="text-danger small mb-1">{{ $message }}
                                             </div> @enderror
